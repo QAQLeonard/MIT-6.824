@@ -61,8 +61,13 @@ func (m *Master) Done() bool {
 //
 func MakeMaster(files []string, nReduce int) *Master {
 	m := Master{}
-
-	// Your code here.
+	TaskQueue:		make(chan *Task, max(nReduce, len(files))),
+	TaskMeta:		make(map[int]*MasterTask),					//保留task引用和状态
+	MasterPhase:	Map,										// MasterPhase: Map, Reduce,表明当前状态
+	NReduce:		nReduce,									// Reduce任务数
+	InputFiles:		files,										// 输入文件
+	Intermediates:	make([][]string, nReduce),					// 中间结果
+	
 
 
 	m.server()
