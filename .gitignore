@@ -1,3 +1,8 @@
 pkg/
 api.key
 *-handin.tar.gz
+.gitattributes
+mrmaster
+mrsequential
+mrworker
+mr-correct-indexer.txt
